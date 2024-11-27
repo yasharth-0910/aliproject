@@ -47,14 +47,12 @@
 			}
 			return "<span class='errorMessage'> $error </span>";
 		}
-
 		private function insertUserDetails($username, $firstName, $lastName, $email, $password) {
 			// Encrypt password using MD5
 			$encryptedPassword = md5($password);
 			$profilePic = "assets/images/profile-pics/user.jpg";
 			$date = date("Y-m-d");
-
-			$result = mysqli_query($this->con, "INSERT INTO users VALUES('', '$username', '$firstName', '$lastName', '$email', '$encryptedPassword', '$date', '$profilePic', '')");
+			$result = mysqli_query($this->con, "INSERT INTO users (username, firstName, lastName, email, password, signUpDate, profilePic, admin) VALUES ('$username', '$firstName', '$lastName', '$email', '$encryptedPassword', '$date', '$profilePic', '0')");
 			return $result;
 		}
 
